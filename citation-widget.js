@@ -1,7 +1,9 @@
 (function() {
 	const ELEMENT_ID = '#citation';
-	const CROSSCITE_URL = $url = "https://citation.crosscite.org/format?style=apa&lang=en-US&doi=";
+	const CROSSCITE_URL = "https://citation.crosscite.org/format?style=apa&lang=en-US&doi=";
+	const SCHEMA_URL = "https://data.crosscite.org/application/vnd.schemaorg.ld+json/";
 	var doi;
+	var generateSchema
 	var jQuery;// Localize jQuery variable to avoid conflicts with other versions a site may be using
 	/******** Load jQuery if not present *********/
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '2.2.4') {
@@ -36,11 +38,26 @@
 	function init(){
 		jQuery(document).ready(function($) {
 			doi = $(ELEMENT_ID).data("doi");
+			generateSchema = $(ELEMENT_ID).data("generate-schema");
+			if (generateSchema === true){
+				$.ajax({
+					url: SCHEMA_URL + encodeURIComponent(doi),
+					dataType: 'text', // don't convert JSON to Javascript object
+					success: function(data) {
+					$('<script>')
+						.attr('type', 'application/ld+json')
+						.text(data)
+						.appendTo('head');
+					},
+					error: function (error) {
+					console.log(error.responseJSON);
+					}
+				});
+			}
 	        $.ajax({
 				url: CROSSCITE_URL + encodeURIComponent(doi),
 				type: 'GET'})
 				.done(function(res){
-					console.log(res);
 					showSuccess($, res);
 				}).fail(function(jqXHR, textStatus, errorThrown) {
 					showError($);
