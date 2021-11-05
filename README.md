@@ -1,5 +1,7 @@
 # citation-widget
-Widget to generate and display a citation based on a DOI in any web page, using the Crosscite Citation Formatter. Optionally, add schema.org metadata to the head element of the same page.
+Widget to generate and display a citation based on a DOI in any web page, using the [Crosscite Citation Formatter](https://citation.crosscite.org/). Optionally adds schema.org JSON-LD metadata to the head element of the same page using [Content negotiation](https://support.datacite.org/docs/datacite-content-resolver).
+
+**NOTE: The code is for example purposes and is not among DataCite's officially supported tools and services. This code is available "as is", without guarantee that it will be maintained in the future.** 
 
 ## Widget setup
 ### Pre-requisites
