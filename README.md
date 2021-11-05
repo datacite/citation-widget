@@ -28,3 +28,6 @@ The following configuration options are available and can be added to the div ta
 | ------------- | -------------- | ------- | --------------------------------------|
 | data-doi     |           |       | **Required** Full DOI URL or prefix/suffix only |
 | data-generate-schema |      true, false          |         | Set to true if you would like to insert schema.org metadata into the head of your web page. This should be used in DOI landing pages only. For more information, see [https://support.datacite.org/docs/how-do-i-expose-my-datasets-to-google-dataset-search](https://support.datacite.org/docs/how-do-i-expose-my-datasets-to-google-dataset-search) |
+
+### Example
+An example is in [citation-widget.html](https://github.com/datacite/citation-widget/blob/main/citation-widget.html). To view it, clone this repository locally and open citation-widget.html in a browser.
