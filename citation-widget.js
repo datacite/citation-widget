@@ -1,19 +1,8 @@
 (function() {
 	const ELEMENT_ID = '#citation';
 	const CROSSCITE_URL = $url = "https://citation.crosscite.org/format?style=apa&lang=en-US&doi=";
-
 	var doi;
 	var jQuery;// Localize jQuery variable to avoid conflicts with other versions a site may be using
-	var key;
-	var nonce;
-	var pubKey;
-	var redirectUri;
-	var scopes;
-	var signedInIdToken;
-	var size;
-	var state;
-	var submitUri;
-
 	/******** Load jQuery if not present *********/
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '2.2.4') {
 	    var script_tag = document.createElement('script');
@@ -44,26 +33,9 @@
 	    // Call our main function
 		init();
 	}
-
 	function init(){
 		jQuery(document).ready(function($) {
 			doi = $(ELEMENT_ID).data("doi");
-			//size = $(elementId).data("size");
-
-			/*if(size=='lg'){
-				$(elementId).addClass('large');
-			} else {
-				$(elementId).addClass('small');
-			}*/
-
-			/******* Load CSS *******/
-	        /*var css_link = $("<link>", {
-	            rel: "stylesheet",
-	            type: "text/css",
-	            href: "orcid-widget.css"
-	        });
-	        css_link.appendTo('head');*/
-
 	        $.ajax({
 				url: CROSSCITE_URL + encodeURIComponent(doi),
 				type: 'GET'})
